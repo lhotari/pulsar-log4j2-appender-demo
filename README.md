@@ -8,8 +8,14 @@ docker run --name pulsar-standalone -d -p 8080:8080 -p 6650:6650 apachepulsar/pu
 
 ### Running application
 
+maven
 ```bash
 ./mvnw spring-boot:run
+```
+
+gradle
+```bash
+./gradlew bootRun
 ```
 
 ### Consuming events
