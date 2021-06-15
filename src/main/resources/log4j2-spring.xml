@@ -12,7 +12,32 @@
       <PatternLayout pattern="${sys:CONSOLE_LOG_PATTERN}" charset="${sys:CONSOLE_LOG_CHARSET}" />
     </Console>
     <Pulsar name="PulsarAppender" serviceUrl="pulsar://localhost:6650" topic="persistent://public/default/logging-demo" avoidRecursive="false">
-      <JSONLayout/>
+      <JSONLayout>
+        <!-- Spring lookup example, http://logging.apache.org/log4j/2.x/manual/lookups.html#SpringLookup -->
+        <KeyValuePair key="applicationName" value="$${spring:spring.application.name}"/>
+        <!-- Java lookup example -->
+        <KeyValuePair key="javaVersion" value="$${java:version}"/>
+        <!--
+        For k8s information, one can use Kubernetes Lookup,
+        http://logging.apache.org/log4j/2.x/manual/lookups.html#KubernetesLookup
+
+        <KeyValuePair key="kubernetes.serviceAccountName" value="${k8s:accountName:-}"/>
+        <KeyValuePair key="kubernetes.clusterName" value="${k8s:clusterName:-}"/>
+        <KeyValuePair key="kubernetes.containerId" value="${k8s:containerId:-}"/>
+        <KeyValuePair key="kubernetes.containerName" value="${k8s:containerName:-}"/>
+        <KeyValuePair key="kubernetes.host" value="${k8s:host:-}"/>
+        <KeyValuePair key="kubernetes.labels.app" value="${k8s:labels.app:-}"/>
+        <KeyValuePair key="kubernetes.labels.pod-template-hash" value="${k8s:labels.podTemplateHash:-}"/>
+        <KeyValuePair key="kubernetes.master_url" value="${k8s:masterUrl:-}"/>
+        <KeyValuePair key="kubernetes.namespaceId" value="${k8s:namespaceId:-}"/>
+        <KeyValuePair key="kubernetes.namespaceName" value="${k8s:namespaceName:-}"/>
+        <KeyValuePair key="kubernetes.podID" value="${k8s:podId:-}"/>
+        <KeyValuePair key="kubernetes.podIP" value="${k8s:podIp:-}"/>
+        <KeyValuePair key="kubernetes.podName" value="${k8s:podName:-}"/>
+        <KeyValuePair key="kubernetes.imageId" value="${k8s:imageId:-}"/>
+        <KeyValuePair key="kubernetes.imageName" value="${k8s:imageName:-}"/>
+        -->
+      </JSONLayout>
     </Pulsar>
   </Appenders>
   <Loggers>
