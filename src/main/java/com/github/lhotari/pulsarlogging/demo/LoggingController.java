@@ -14,7 +14,7 @@ public class LoggingController {
     private static final Logger LOG = LoggerFactory.getLogger(LoggingController.class);
 
     @GetMapping(value = "/log", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String log(@RequestParam("msg") String msg) {
+    public String log(@RequestParam(value = "msg", required = false) String msg) {
         if (msg != null) {
             LOG.info("{}", msg);
         } else {
