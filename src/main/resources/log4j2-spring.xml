@@ -11,7 +11,7 @@
     <Console name="Console" target="SYSTEM_OUT" follow="true">
       <PatternLayout pattern="${sys:CONSOLE_LOG_PATTERN}" charset="${sys:CONSOLE_LOG_CHARSET}" />
     </Console>
-    <Pulsar name="PulsarAppender" serviceUrl="pulsar://localhost:6650" topic="persistent://public/default/logging-demo" avoidRecursive="false">
+    <Pulsar name="PulsarAppender" serviceUrl="${spring:pulsar.logging.serviceUrl}" topic="${spring:pulsar.logging.topic}" avoidRecursive="false">
       <JSONLayout>
         <!-- Spring lookup example, http://logging.apache.org/log4j/2.x/manual/lookups.html#SpringLookup -->
         <KeyValuePair key="applicationName" value="$${spring:spring.application.name}"/>
