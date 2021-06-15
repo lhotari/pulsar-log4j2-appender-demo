@@ -12,14 +12,15 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-    all*.exclude module : 'spring-boot-starter-logging'
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-json'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    modules {
+        module("org.springframework.boot:spring-boot-starter-logging") {
+            replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")
+        }
+    }
     implementation 'org.apache.pulsar:pulsar-client:2.7.2'
     implementation 'org.apache.pulsar:pulsar-log4j2-appender:2.6.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
