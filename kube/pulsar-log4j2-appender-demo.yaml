@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pulsar-log4j2-appender-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pulsar-log4j2-appender-demo
+  template:
+    metadata:
+      labels:
+        app: pulsar-log4j2-appender-demo
+    spec:
+      containers:
+        - name: app
+          image: localhost:32000/pulsar-log4j2-appender-demo/app:latest
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PULSAR_LOGGING_SERVICEURL
+              value: pulsar://pulsar-testenv-deployment-proxy:6650
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pulsar-log4j2-appender-demo
+spec:
+  selector:
+    app: pulsar-log4j2-appender-demo
+  ports:
+    - port: 80
+      targetPort: 8081
+  type: LoadBalancer
