@@ -62,6 +62,12 @@
       <groupId>com.github.apache.pulsar-adapters</groupId>
       <artifactId>pulsar-log4j2-appender</artifactId>
       <version>master-d87c3ff028-1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.pulsar</groupId>
+          <artifactId>buildtools</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
   </dependencies>

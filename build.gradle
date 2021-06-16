@@ -33,7 +33,9 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-spring-boot'
     implementation 'org.apache.logging.log4j:log4j-kubernetes'
     implementation 'org.apache.pulsar:pulsar-client:2.8.0'
-    implementation 'com.github.apache.pulsar-adapters:pulsar-log4j2-appender:master-d87c3ff028-1'
+    implementation('com.github.apache.pulsar-adapters:pulsar-log4j2-appender:master-d87c3ff028-1') {
+        exclude group: 'org.apache.pulsar', module: 'buildtools'
+    }
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
 }
