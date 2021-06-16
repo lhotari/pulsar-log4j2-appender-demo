@@ -6,6 +6,12 @@
 docker run --name pulsar-standalone -d -p 8080:8080 -p 6650:6650 apachepulsar/pulsar:2.8.0 /pulsar/bin/pulsar standalone
 ```
 
+stopping and removing
+```
+docker stop pulsar-standalone
+docker rm pulsar-standalone
+```
+
 ### Running application
 
 maven
@@ -39,8 +45,8 @@ uptime | curl -H 'Content-Type: text/plain' -d @- http://localhost:8081/log
 ```
 
 ```bash
-java -jar build/libs/demo-0.0.1-SNAPSHOT.jar --server.port=8082 &
-java -jar build/libs/demo-0.0.1-SNAPSHOT.jar --server.port=8083 &
+java -jar build/libs/demo-0.0.1-SNAPSHOT.jar --server.port=8082 --spring.application.name=app1 &
+java -jar build/libs/demo-0.0.1-SNAPSHOT.jar --server.port=8083 --spring.application.name=app2 &
 ```
 
 reproduces the problem
