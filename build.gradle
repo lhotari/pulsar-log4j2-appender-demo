@@ -11,12 +11,12 @@ sourceCompatibility = '1.8'
 repositories {
     mavenCentral()
     maven {
-        url 'https://jitpack.io'
+        url 'https://repository.apache.org/snapshots/'
         content {
-            includeGroup("com.github.apache.pulsar-adapters")
+            includeGroupByRegex("org\\.apache\\..*")
         }
-        metadataSources {
-            artifact()
+        mavenContent {
+            snapshotsOnly()
         }
     }
 }
@@ -33,7 +33,7 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-spring-boot'
     implementation 'org.apache.logging.log4j:log4j-kubernetes'
     implementation 'org.apache.pulsar:pulsar-client:2.8.0'
-    implementation('com.github.apache.pulsar-adapters:pulsar-log4j2-appender:master-d87c3ff028-1') {
+    implementation('org.apache.pulsar:pulsar-log4j2-appender:2.8.0-SNAPSHOT') {
         exclude group: 'org.apache.pulsar', module: 'buildtools'
     }
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
