@@ -3,7 +3,7 @@
 ### Starting local Pulsar standalone
 
 ```bash
-docker run --name pulsar-standalone -d -p 8080:8080 -p 6650:6650 apachepulsar/pulsar:2.7.2 /pulsar/bin/pulsar standalone
+docker run --name pulsar-standalone -d -p 8080:8080 -p 6650:6650 apachepulsar/pulsar:2.8.0 /pulsar/bin/pulsar standalone
 ```
 
 ### Running application
