@@ -10,19 +10,6 @@ sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
-    maven {
-        url 'https://repository.apache.org/snapshots/'
-        content {
-            includeGroupByRegex("org\\.apache\\..*")
-        }
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
-}
-
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 4, 'hours'
 }
 
 dependencies {
@@ -37,7 +24,7 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-spring-boot'
     implementation 'org.apache.logging.log4j:log4j-kubernetes'
     implementation 'org.apache.pulsar:pulsar-client:2.8.0'
-    implementation 'org.apache.pulsar:pulsar-log4j2-appender:2.8.0-SNAPSHOT'
+    implementation 'org.apache.pulsar:pulsar-log4j2-appender:2.8.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
 }
